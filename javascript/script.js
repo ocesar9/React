@@ -39,6 +39,32 @@ const carro = {
   portas: 4
 }
 
-carroAno = {...carro, ano:2008}
+const carroAno = {...carro, ano:2008}
 console.log(carro)
 console.log(carroAno)
+
+import quadrado from "./quadrado.js";
+
+console.log(quadrado.areaQuadrado(5))
+console.log(quadrado.perimetroQuadrado(5));
+
+import numeroAleatorio from "./numeroAleatorio.js";
+
+console.log(numeroAleatorio());
+
+
+const precos = [
+  'Credito',
+  'R$ 200',
+  'R$ 400',
+  'Constas a pagar',
+  'R$ 300',
+  'R$ 400',
+  'Meus dados',
+]
+
+const precosFiltro = precos.filter((p) => p.includes('R$'));
+const precosNumeros = precosFiltro.map((preco) => Number(preco.replace('R$','')));
+
+console.log(precosFiltro)
+console.log(precosNumeros)
