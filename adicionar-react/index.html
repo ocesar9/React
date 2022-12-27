@@ -10,14 +10,69 @@
   <title>React Para iniciantes</title>
 </head>
 <body>
-    <div id="app">
+    <div id="app"></div>
 
-    </div>
     <script type="text/babel">
-      function App(){
-        return <div>Meu App</div>
+      const Compras = () => {
+
+        const [contador,setContador] = React.useState(0);
+        console.log(contador)
+        function comprar(){
+          setContador(contador +1);
+        }
+
+        return (
+          <div>
+            <button onClick={comprar}>Comprar</button>
+            <p>Total: {contador}</p>
+            <p>Preco: R${contador*250}</p>
+            </div>
+        )
       }
-      ReactDOM.render(<App/>, document.getElementById('app'))
+      // class Button extends React.Component {
+      //   render(){
+      //     return <button>Comprar</button>
+      //   }
+      // }
+
+      const Button = () => {
+        function handleClick(event){
+          console.log(event.target.innerText);
+        }
+        return <button onClick={handleClick}>Comprar</button>
+      }
+      const Titulo = () => {
+        const numero = Math.random() * 1000
+        return <h1>Meu Titulo {numero}</h1>
+      }
+      
+      const App = () => {
+        return <div>Meu App
+          <Compras/>
+          <Titulo/>
+          <Button />  
+          <div>
+            Compre aqui tambem
+            <Button/>
+            </div>
+          </div>
+      }
+
+      // function App(){
+      //   return <div>Meu App</div>
+      // }
+      
+      // function App() {
+        //   return /*#__PURE__*/React.createElement("div", {
+          //     id: "app"
+          //   }, "Meu App");
+      // }
+          
+      ReactDOM.render(<App />, document.getElementById('app'))
+      
+      
+      // ReactDOM.render(<Button/>, document.getElementById('app'))
+
     </script>
 </body>
 </html>
