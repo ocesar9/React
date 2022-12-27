@@ -68,3 +68,26 @@ const precosNumeros = precosFiltro.map((preco) => Number(preco.replace('R$',''))
 
 console.log(precosFiltro)
 console.log(precosNumeros)
+
+
+const grupoA = 100;
+const grupoB = 200;
+
+if(grupoA > grupoB) {
+  console.log('Grupo A, ganhou com', grupoA)
+}else{
+  console.log('Grupo B, ganhou com', grupoB)
+
+}
+
+const vencedor = grupoA > grupoB ? 'Grupo A venceu' : 'Grupo B venceu';
+console.log(vencedor);
+
+const active = true;
+const button = active && 'Botao esta ativo';
+
+console.log(button);
+
+
+
+
