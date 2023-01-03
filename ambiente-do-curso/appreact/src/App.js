@@ -1,28 +1,42 @@
 import React from 'react'
-import Produto from './Produto';
 
 const App = () => {
-  const [produto, setProduto] = React.useState(null);
-  
-  React.useEffect(() =>{
-    const produtoLocal = window.localStorage.getItem('produto')
-    if(produtoLocal !== null) setProduto(produtoLocal)
-  },[])
+  // const [comentarios,setComentarios] = React.useState([]);
+  // const [input,setInput] = React.useState('');
+  // const inputElement =  React.useRef()
 
-  React.useEffect(() => {
-    if(produto !== null) window.localStorage.setItem('produto', produto);
-  },[produto])
+  // function handleClick(){
+  //   setComentarios([...comentarios,input]);
+  //   setInput('');
+  //   inputElement.current.focus();
+  // }
 
-  function handleClick({target}) {
-    setProduto(target.innerText)
+  const [carrinho,setCarrinho] = React.useState(0);
+  const [notificacao, setNotificacao] = React.useState(null);
+  const timeoutRef = React.useRef();
+
+  function handleClick(){
+    setCarrinho(carrinho + 1);
+    setNotificacao("Item adicionado ao carrinho!");
+
+    clearImmediate(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setNotificacao(null)
+    },2000)
   }
-
+  
   return (
     <div>
-      {produto && <h1>Preferencia {produto}</h1>}
-      <button onClick={handleClick} style={{marginRight: '1rem'}}>notebook</button>
-      <button onClick={handleClick}>smartphone</button>
-      {produto && <Produto produto={produto}/>}
+      {/* <ul>
+        {comentarios.map((coment) => 
+          <li key={coment}>{coment}</li>)}
+      </ul>
+      <input type="text" value={input} onChange={({target}) => setInput(target.value)} />
+      <br />
+      <button ref={inputElement} onClick={handleClick}>Enviar</button> */}
+    <p>{notificacao}</p>
+    <button onClick={handleClick}>Adicionar Carrinho {carrinho}</button>
+
     </div>
   )
 }
