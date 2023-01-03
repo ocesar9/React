@@ -1,41 +1,65 @@
 import React from 'react'
 
-const App = () => {
-  // const [comentarios,setComentarios] = React.useState([]);
-  // const [input,setInput] = React.useState('');
-  // const inputElement =  React.useRef()
+const set1 = new Set();
+const set2 = new Set();
 
-  // function handleClick(){
-  //   setComentarios([...comentarios,input]);
-  //   setInput('');
-  //   inputElement.current.focus();
-  // }
+// function operacoLenta(){
+//   let c;
+//   for(let i=0; i< 1000000; i++){
+//     c = i+i/10
+//   }
+//   return c;
+// }
 
-  const [carrinho,setCarrinho] = React.useState(0);
-  const [notificacao, setNotificacao] = React.useState(null);
-  const timeoutRef = React.useRef();
+const Produto = () => {
+  const func1 = React.useCallback(() => {
+    console.log('Teste1');
+  },[]);
 
-  function handleClick(){
-    setCarrinho(carrinho + 1);
-    setNotificacao("Item adicionado ao carrinho!");
-
-    clearImmediate(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setNotificacao(null)
-    },2000)
+  const func2 = () => {
+    console.log('Teste2');
   }
-  
+
+  set1.add(func1);
+  set2.add(func2);
+
+  console.log('Set1',set1);
+  console.log('Set2',set2);
+
+  return(
+    <div>
+      <p onClick={func1}>Produto 1</p>
+      <p onClick={func2}>Produto 2</p>
+    </div>
+  )
+}
+
+const App = () => {
+
+  const [contar,setContar] = React.useState(0);
+
+  // const valor = React.useMemo(() =>{
+  //   const localItem = window.localStorage.getItem('produto');
+  //   console.log('Aconteceu o memo');
+  //   return localItem;
+  // },[])
+  // const t1 = performance.now();
+  // const valor = React.useMemo(() => {
+  //   operacoLenta();
+  // },[]);
+  // console.log(valor);
+  // console.log(performance.now() - t1);
+
+  const handleClick = React.useCallback(() => {
+    setContar((contar) => contar+1);
+  },[]);
+
   return (
     <div>
-      {/* <ul>
-        {comentarios.map((coment) => 
-          <li key={coment}>{coment}</li>)}
-      </ul>
-      <input type="text" value={input} onChange={({target}) => setInput(target.value)} />
-      <br />
-      <button ref={inputElement} onClick={handleClick}>Enviar</button> */}
-    <p>{notificacao}</p>
-    <button onClick={handleClick}>Adicionar Carrinho {carrinho}</button>
+      <Produto/>
+
+      {/* <button onClick={() => setContar(contar+1)}>{contar}</button> */}
+      <button onClick={handleClick}>{contar}</button>
 
     </div>
   )
