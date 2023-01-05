@@ -1,9 +1,11 @@
 import React from 'react'
 
-const App = () => {
-  // const [termos,setTermos] = React.useState(false);
 
-  const [cores,setCores] = React.useState(['vermelho']);
+const coresArray = ['azul','azul','roxo','laranja','verde','vermelho','cinza']
+
+const App = () => {
+
+  const [cores,setCores] = React.useState(['vermelho', 'azul']);
 
   function handleChange({target}){
     console.log(target);
@@ -25,22 +27,13 @@ const App = () => {
 
   return (
    <form>
-    {/* {termos && <p>Aceitou os termos</p>}
-    <label htmlFor="">
-      <input type="checkbox" value="termos" checked={termos} onChange={({target}) => {
-        setTermos(target.checked)
-      }}/>
-      Li os termos.
-    </label> */}
-
-    <label htmlFor="">
-      <input type="checkbox" value="azul" checked={checkColor('azul')} onChange={handleChange}/>
-      Azul
-    </label>
-    <label htmlFor="">
-      <input type="checkbox" value="vermelho" checked={cores.includes('vermelho')} onChange={handleChange}/>
-      Vermelho
-    </label>
+    {coresArray.map((cor, index) => (
+      <label key={index} style={{textTransform: 'capitalize'}}>
+      <input type="checkbox" value={cor + index} checked={checkColor(cor + index)} onChange={handleChange}/>
+        {cor}
+      </label> 
+      )
+    )}
    </form>
   )
 }
