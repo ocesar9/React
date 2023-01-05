@@ -1,47 +1,89 @@
 import React from 'react';
 
+const formFields = [
+  {
+    id: 'nome',
+    label: 'Nome',
+    type: 'text',
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    type: 'email',
+  },
+  {
+    id: 'senha',
+    label: 'Senha',
+    type: 'password',
+  },
+  {
+    id: 'cep',
+    label: 'Cep',
+    type: 'text',
+  },
+  {
+    id: 'rua',
+    label: 'Rua',
+    type: 'text',
+  },
+  {
+    id: 'numero',
+    label: 'Numero',
+    type: 'text',
+  },
+  {
+    id: 'bairro',
+    label: 'Bairro',
+    type: 'text',
+  },
+  {
+    id: 'cidade',
+    label: 'Cidade',
+    type: 'text',
+  },
+  {
+    id: 'estado',
+    label: 'Estado',
+    type: 'text',
+  },
+];
+
 const App = () => {
+  const [form, setForm] = React.useState(
+    formFields.reduce((acc, field) => {
+      return { ...acc, [field.id]: '' };
+    }, {}),
+  );
 
-  const [form,setForm] = React.useState({
-    nome:'',
-    email: '',
-  })
-  // const [nome, setNome] = React.useState('');
-  // const [email, setEmail] = React.useState('');
+  const [response, setResponse] = React.useState(null);
 
-  function handleSubmit(event){
-    console.log(event);
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://ranekapi.origamid.dev/json/api/usuario', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    }).then((response) => {
+      setResponse(response);
+    });
   }
 
-  function handleChange({target}){
-    const {id,value} = target;
-    console.log(id,value);
-    setForm({...form,[id]:value})
-
+  function handleChange({ target }) {
+    const { id, value } = target;
+    setForm({ ...form, [id]: value });
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="nome">Nome</label>
-      <input
-        id='nome'
-        type="text"
-        name='nome'
-        value={form.nome}
-        onChange={handleChange}
-      />
-      {form.nome}
-      <br />
-      <label htmlFor="email">Email</label>
-      <input
-        id='email'
-        type="text"
-        name='email'
-        value={form.email}
-        onChange={handleChange}
-        />
-        {form.email}
-        <br />
+      {formFields.map(({ id, label, type }) => (
+        <div key={id}>
+          <label htmlFor={id}>{label}</label>
+          <input type={type} id={id} value={form[id]} onChange={handleChange} />
+        </div>
+      ))}
+      {response && response.ok && <p>Usuário Criado</p>}
       <button>Enviar</button>
     </form>
   );
