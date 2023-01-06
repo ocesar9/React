@@ -1,60 +1,54 @@
 import React from 'react';
-import Checkbox from './Form/Checkbox';
 import Input from './Form/Input';
-import Radio from './Form/Radio';
-import Select from './Form/Select';
 
 const App = () => {
-  const [nome, setNome] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [produto, setProduto] = React.useState('');
-  const [cor, setCor] = React.useState('');
-  const [frutas, setFrutas] = React.useState('');
-  const [linguagens, setLinguagens] = React.useState([]);
-  const [termos, setTermos] = React.useState([]);
+  const [cep, setCep] = React.useState('');
+  const [error, setError] = React.useState(null);
 
-  if(termos.length > 0) {
-    console.log('enviar');
+  function validateCep(value) {
+    if (value.length === 0) {
+      setError('Fill a CEP!');
+      return false;
+    } else if (!/^\d{5}-?\d{3}$/.test(value)) {
+      setError('Fill a valid CEP!');
+      return false;
+    } else {
+      setError(null);
+      return true;
+    }
+  }
+
+  function handleblur({ target }) {
+    validateCep(target.value);
+  }
+
+  function handleChange({ target }) {
+    if (error) validateCep(target.value);
+    setCep(target.value);
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    if(validateCep(cep)){
+      console.log('Enviou!')
+    }else{
+      console.log('Nao enviar')
+    }
   }
 
   return (
-    <form>
-      <h2>Termos</h2>
-      <Checkbox
-        options={['Li e aceito os termos']}
-        value={termos}
-        setValue={setTermos}
-      />
-
-      <h2>Checkbox</h2>
-      <Checkbox
-        options={['Javascript', 'PHP', 'Ruby']}
-        value={linguagens}
-        setValue={setLinguagens}
-      />
-
-      <h2>Cores</h2>
-      <Radio options={['Azul', 'Vermelho']} value={cor} setValue={setCor} />
-      <h2>Cores</h2>
-      <Radio
-        options={['Uva', 'Banana', 'Laranja']}
-        value={frutas}
-        setValue={setFrutas}
-      />
-      <Select
-        options={['smarthphone', 'tablet']}
-        value={produto}
-        setValue={setProduto}
-      />
-      <Input label="Nome" id="nome" value={nome} setValue={setNome} />
+    <form onSubmit={handleSubmit}>
       <Input
-        label="Email"
-        id="email"
-        value={email}
-        setValue={setEmail}
-        required
+        label="CEP"
+        id="cep"
+        type="text"
+        placeholder="00000-000"
+        value={cep}
+        onBlur={handleblur}
+        onChange={handleChange}
       />
-      <button>Enviar</button>
+      {cep}
+      {error && <p>{error}</p>}
     </form>
   );
 };
