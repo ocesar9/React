@@ -1,74 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
+import Card from 'react-bootstrap/Card'
 
-const ProdutosContainer = styled.div `
-  display: flex;
-
-`
-
-const Produto = styled.div`
-  flex: 1;
-`
-
-const Titulo = styled.h1`
-  font-size:2rem;
-  color: tomato;
-`
-const Paragrafo = styled.p`
-  font-size: 1.5rem;
-  color: green;
-`
-
-const Preco = styled.p`
-  /* background: ${({cor}) => cor}; */
-  background: hsl(${Math.random() * 360}, 100%,50%);
-  color: white;
-`
-
-const Comprar = styled.button`
-  background: ${({ativo}) => ativo ? '#000' : '#fff'};
-  font-size: 1rem;
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 0.5rem;
-  color: white;
-  color: ${({ativo}) => ativo ? '#fff' : '#000'};
-  cursor: pointer;
-  &:hover{
-    background: tomato;
-  }
-`
 const App = () => {
-
-  // function template(value,total){
-  //   console.log(value);
-  // }
-  // const total = 100
-  // template`Isso e ${total} um teste`
-
-  const [ativo,setAtivo] = React.useState(false);
-
-  function handleClick(){
-    setAtivo(!ativo)
-  }
-
-
   return (
-    <div>
-      <Comprar ativo={ativo} onClick={handleClick}>Compre aqui</Comprar>
-      <ProdutosContainer>
-        <Produto>
-          <Titulo>Notebook</Titulo>
-          <Paragrafo>Meu texto e esse.</Paragrafo>
-          <Preco>R$ 2000</Preco>
-        </Produto>
-        <Produto>
-          <Titulo>Smartphone</Titulo>
-          <Paragrafo>Meu texto e esse.</Paragrafo>
-          <Preco>R$ 1000</Preco>
-        </Produto>
-      </ProdutosContainer>
-    </div>
+    // <div className='card bg-dark text-white m-5' style={{maxWidth: '18rem'}}>
+    //   <div className='card-header'>Notebook</div>
+    //   <div className="card-body">
+    //     <h5 className='card-title'>R$ 2.500</h5>
+    //     <p className='card-text'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque non esse odit, quaerat, placeat, dolorum qui debitis molestiae pariatur doloribus quibusdam. Nam consequuntur nulla vero harum dolores doloribus libero incidunt.</p>
+    //   </div>
+    // </div>
+
+    <Card bg='dark' text='white' className='text-white m-5' style={{maxWidth:'18rem'}}>
+      <Card.Header>Notebook</Card.Header>
+      <Card.Body>
+        <Card.Title>R$ 2.500</Card.Title>
+        <Card.Text> Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque rem veritatis, ex alias quod minima ut, voluptatem aliquam repellat magni optio nesciunt voluptas est atque cumque cum excepturi consequuntur voluptate! </Card.Text>
+      </Card.Body>
+    </Card>
+
   )
 }
 
