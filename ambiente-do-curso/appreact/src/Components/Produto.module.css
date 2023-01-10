@@ -1,0 +1,21 @@
+.titulo,
+.preco {
+  color: #43c;
+  --cor:red;
+}
+
+/* @value cor:red; */
+
+.preco {
+  /* color: var(--cor); */
+  /* composes:titulo; */
+  font-weight: bold;
+}
+
+.comprar {
+  transform: rotate(90deg) translateY(-100px);
+}
+
+:global .container{
+  max-width: 900px;
+}
