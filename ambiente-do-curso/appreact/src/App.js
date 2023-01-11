@@ -7,6 +7,10 @@ import NaoEncontrada from './NaoEncontrada'
 import Produto from './Produto'
 import Sobre from './Sobre'
 
+import ProdutoAvaliacao from './ProdutoAvaliacao';
+import ProdutoCustomizado from './ProdutoCustomizado';
+import ProdutoDescricao from './ProdutoDescricao';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,7 +19,11 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='sobre' element={<Sobre/>}/>
         <Route path='login' element={<Login/>}/>
-        <Route path='produto/:id' element={<Produto/>}/>
+        <Route path='produto/:id/*' element={<Produto/>}>
+          <Route path='/' element={<ProdutoDescricao/>} />
+          <Route path='avaliacao' element={<ProdutoAvaliacao/>} />
+          <Route path='customizado' element={<ProdutoCustomizado/>} />
+        </Route>
         <Route path='*' element={<NaoEncontrada/>}/>
       </Routes>
     </BrowserRouter>
