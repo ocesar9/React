@@ -1,9 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
   return (
-    <div>Esse e o header</div>
-  )
-}
+    <nav>
+      <NavLink to="/" end>
+        Home
+      </NavLink>
+      {' '}|{' '}
+      <NavLink to="sobre">Sobre</NavLink>
+      {' '}|{' '}
+      <NavLink to="login">Login</NavLink>
+    </nav>
+  );
+};
 
-export default Header
+export default Header;
