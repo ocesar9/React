@@ -1,30 +1,20 @@
 import React from 'react'
-
-import foto from './img/foto.jpg'
-import {ReactComponent as Dog} from './img/dog.svg'
-
-import './App.css'
-import DogSvg from './DogSvg'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Header from './Header'
+import Home from './Home'
+import NaoEncontrada from './NaoEncontrada'
+import Sobre from './Sobre'
 
 const App = () => {
-
-    const [olho,setOlho] = React.useState(5);
-
-    function handleClick(){
-      for(let i=0; i<=5; i++){
-        setTimeout(() =>{
-          setOlho(i)
-        },100*i)
-      }
-    }
-
   return (
-    <div>
-      <p className="fundo" onClick={handleClick}></p>
-      <DogSvg color="#84e" olho={olho} />
-      <Dog/>
-      <img src={foto} alt="Cachorro"/>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='sobre' element={<Sobre/>}/>
+        <Route path='*' element={<NaoEncontrada/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
