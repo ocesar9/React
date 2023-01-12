@@ -4,3 +4,4 @@ npm install react react-dom (react / react-dom);
 npm start (start-webserver)
 npm install @babel/core @babel/preset-react babel-loader --save-dev (babel - jsx-compiler)
 npm install style-loader css-loader --save-dev (Loader.css - css-compiler)
+npm install history react-router-dom@6.0.0-beta.0 (Router )
