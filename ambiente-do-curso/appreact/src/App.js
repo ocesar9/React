@@ -1,19 +1,16 @@
-import React from 'react';
-const Contato = React.lazy(() => import('./Contato'));
+import React from 'react'
+import Header from './Header'
 
 const App = () => {
-  const [ativar, setAtivar] = React.useState(false);
+
+  const [contar,setContar] = React.useState(0);
 
   return (
     <div>
-      {ativar && (
-        <React.Suspense fallback={<div>Carregando...</div>}>
-          <Contato />
-        </React.Suspense>
-      )}
-      <button onClick={() => setAtivar(true)}>Ativar</button>
+      <Header />
+      <button onClick={() => setContar(contar+1)}>{contar}</button>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
