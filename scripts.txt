@@ -6,3 +6,6 @@ npm install @babel/core @babel/preset-react babel-loader --save-dev (babel - jsx
 npm install style-loader css-loader --save-dev (Loader.css - css-compiler)
 npm install history react-router-dom@6.0.0-beta.0 (Router )
 $ npm install jquery (jquery - $)
+
+Login - Dogs
+id: 12163, username: 'corote', nome: 'corote', email: 'corote@origamid.com'
