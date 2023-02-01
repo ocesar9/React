@@ -8,4 +8,4 @@ npm install history react-router-dom@6.0.0-beta.0 (Router )
 $ npm install jquery (jquery - $)
 
 Login - Dogs
-id: 12163, username: 'corote', nome: 'corote', email: 'corote@origamid.com'
+id: 12163, username: 'password', senha: 'corote123JULIO', email: 'corote@origamid.com'
