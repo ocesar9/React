@@ -7,5 +7,7 @@ npm install style-loader css-loader --save-dev (Loader.css - css-compiler)
 npm install history react-router-dom@6.0.0-beta.0 (Router )
 $ npm install jquery (jquery - $)
 
+$ npm install victory - (Graph)
+
 Login - Dogs
 id: 12163, username: 'password', senha: 'corote123JULIO', email: 'corote@origamid.com'
