@@ -1,17 +1,18 @@
 import React from 'react';
 
 const types = {
+
   email: {
     regex:
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, //eslint-disable-line
     message: 'Preencha um email valido',
   },
   password: {
-    regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-    message: 'A senha precisa ter 1 caracter maisuclo, 1 minusculo e 1 digito. Com no minimo 8 caracteres'
+    regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, //eslint-disable-line
+    message: 'A senha precisa ter 1 caracter maisculo, 1 minusculo e 1 digito. Com no minimo 8 caracteres'
   },
   number: {
-    regex: /^\d+$/,
+    regex: /^\d+$/, //eslint-disable-line
     message: 'Preencha apenas com numeros'
   }
 };

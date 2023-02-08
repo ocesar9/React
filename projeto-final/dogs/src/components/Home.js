@@ -1,7 +1,6 @@
 import React from 'react'
 import Feed from './feed/Feed'
 import Head from './interface-elements/Head'
-import Loading from './interface-elements/Loading'
 
 const Home = () => {
   return (

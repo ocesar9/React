@@ -9,5 +9,7 @@ $ npm install jquery (jquery - $)
 
 $ npm install victory - (Graph)
 
+$ npm run build (Public Application)
+
 Login - Dogs
 id: 12163, username: 'password', senha: 'corote123JULIO', email: 'corote@origamid.com'
