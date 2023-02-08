@@ -6,7 +6,7 @@ const UserProfile = () => {
 
   const {user} = useParams();
   return (
-    <section className='cotainer mainSection'>
+    <section className='container mainContainer'>
       <h1 className='title'>{user}</h1>
       <Feed user={user} />
     </section>
