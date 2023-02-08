@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import Button from '../forms/Button';
 import Input from '../forms/Input';
 import Error from '../interface-elements/Error';
+import Head from '../interface-elements/Head';
 import styles from './LoginPasswordLost.module.css';
 
 const LoginPasswordLost = () => {
@@ -24,6 +25,7 @@ const LoginPasswordLost = () => {
 
   return (
     <section>
+      <Head title='Perdeu a senha?'/>
       <h1 className="title">Perdeu a senha?</h1>
       {data ? (
         <p className={styles.data}>{data}</p>

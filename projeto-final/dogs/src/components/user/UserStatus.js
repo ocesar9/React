@@ -1,8 +1,11 @@
 import React from 'react'
+import Head from '../interface-elements/Head'
 
 const UserStatus = () => {
   return (
-    <div>Estatisticas</div>
+    <div>
+      <Head title='Estatisticas'/>
+    </div>
   )
 }
 
